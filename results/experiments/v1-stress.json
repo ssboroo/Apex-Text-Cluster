@@ -1,0 +1,75 @@
+{
+  "suite": "stress",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "warning": "Synthetic/public-category labels are NOT Apex embedding-based hidden ground truth. No live reward claim.",
+  "cases": [
+    {
+      "case": "synthetic-social-5000-101",
+      "texts": 5000,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 1.7894,
+        "cpu_seconds": 2.0661,
+        "peak_rss_mib": 158.3,
+        "ari": 0.25415,
+        "nmi": 0.69579,
+        "combined": 0.47497,
+        "clusters": 50,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 6.0074,
+        "cpu_seconds": 7.4361,
+        "peak_rss_mib": 373.9,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 8,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-titles-5000-101",
+      "texts": 5000,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 1.1815,
+        "cpu_seconds": 1.3796,
+        "peak_rss_mib": 158.4,
+        "ari": 0.3746,
+        "nmi": 0.77885,
+        "combined": 0.57673,
+        "clusters": 50,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 5.1232,
+        "cpu_seconds": 7.7278,
+        "peak_rss_mib": 370.2,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 12,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    }
+  ]
+}

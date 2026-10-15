@@ -1,0 +1,360 @@
+{
+  "suite": "full",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "warning": "Synthetic/public-category labels are NOT Apex embedding-based hidden ground truth. No live reward claim.",
+  "cases": [
+    {
+      "case": "synthetic-social-300-101",
+      "texts": 300,
+      "baseline_upstream": {
+        "ok": false,
+        "error": "worker exited 1 without result"
+      },
+      "solution": {
+        "ok": false,
+        "error": "worker exited 1 without result"
+      }
+    },
+    {
+      "case": "synthetic-titles-300-101",
+      "texts": 300,
+      "baseline_upstream": {
+        "ok": false,
+        "error": "worker exited 1 without result"
+      },
+      "solution": {
+        "ok": false,
+        "error": "worker exited 1 without result"
+      }
+    },
+    {
+      "case": "synthetic-social-300-202",
+      "texts": 300,
+      "baseline_upstream": {
+        "ok": false,
+        "error": "worker exited 1 without result"
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 0.2933,
+        "cpu_seconds": 0.5746,
+        "peak_rss_mib": 158.4,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 8,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-titles-300-202",
+      "texts": 300,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 0.1364,
+        "cpu_seconds": 0.1589,
+        "peak_rss_mib": 150.3,
+        "ari": 0.91976,
+        "nmi": 0.971,
+        "combined": 0.94538,
+        "clusters": 12,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 0.2662,
+        "cpu_seconds": 0.5628,
+        "peak_rss_mib": 157.2,
+        "ari": 0.97072,
+        "nmi": 0.97723,
+        "combined": 0.97398,
+        "clusters": 12,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-social-300-303",
+      "texts": 300,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 0.0676,
+        "cpu_seconds": 0.0867,
+        "peak_rss_mib": 150.7,
+        "ari": 0.83085,
+        "nmi": 0.92282,
+        "combined": 0.87683,
+        "clusters": 12,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 0.3726,
+        "cpu_seconds": 0.6979,
+        "peak_rss_mib": 158.3,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 8,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-titles-300-303",
+      "texts": 300,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 0.0976,
+        "cpu_seconds": 0.1129,
+        "peak_rss_mib": 150.2,
+        "ari": 0.90038,
+        "nmi": 0.96566,
+        "combined": 0.93302,
+        "clusters": 12,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 0.279,
+        "cpu_seconds": 0.5229,
+        "peak_rss_mib": 157.0,
+        "ari": 0.99159,
+        "nmi": 0.99411,
+        "combined": 0.99285,
+        "clusters": 12,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-social-1200-101",
+      "texts": 1200,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 0.4133,
+        "cpu_seconds": 0.4136,
+        "peak_rss_mib": 153.3,
+        "ari": 0.48316,
+        "nmi": 0.79488,
+        "combined": 0.63902,
+        "clusters": 24,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 0.6537,
+        "cpu_seconds": 1.2177,
+        "peak_rss_mib": 170.8,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 8,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-titles-1200-101",
+      "texts": 1200,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 0.1856,
+        "cpu_seconds": 0.2146,
+        "peak_rss_mib": 152.9,
+        "ari": 0.71182,
+        "nmi": 0.88781,
+        "combined": 0.79982,
+        "clusters": 24,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 1.0905,
+        "cpu_seconds": 2.1419,
+        "peak_rss_mib": 173.8,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 12,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-social-1200-202",
+      "texts": 1200,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 0.2373,
+        "cpu_seconds": 0.2626,
+        "peak_rss_mib": 152.9,
+        "ari": 0.49285,
+        "nmi": 0.79741,
+        "combined": 0.64513,
+        "clusters": 24,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 1.059,
+        "cpu_seconds": 1.6515,
+        "peak_rss_mib": 175.9,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 8,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-titles-1200-202",
+      "texts": 1200,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 0.185,
+        "cpu_seconds": 0.2145,
+        "peak_rss_mib": 152.4,
+        "ari": 0.69416,
+        "nmi": 0.88561,
+        "combined": 0.78989,
+        "clusters": 24,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 1.3259,
+        "cpu_seconds": 2.5518,
+        "peak_rss_mib": 173.4,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 12,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-social-1200-303",
+      "texts": 1200,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 0.2376,
+        "cpu_seconds": 0.2666,
+        "peak_rss_mib": 152.7,
+        "ari": 0.49482,
+        "nmi": 0.7974,
+        "combined": 0.64611,
+        "clusters": 24,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 1.2677,
+        "cpu_seconds": 2.5649,
+        "peak_rss_mib": 175.4,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 8,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    },
+    {
+      "case": "synthetic-titles-1200-303",
+      "texts": 1200,
+      "baseline_upstream": {
+        "ok": true,
+        "seconds": 0.2266,
+        "cpu_seconds": 0.2413,
+        "peak_rss_mib": 152.3,
+        "ari": 0.68163,
+        "nmi": 0.8839,
+        "combined": 0.78276,
+        "clusters": 24,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      },
+      "solution": {
+        "ok": true,
+        "seconds": 1.0372,
+        "cpu_seconds": 2.1663,
+        "peak_rss_mib": 173.5,
+        "ari": 1.0,
+        "nmi": 1.0,
+        "combined": 1.0,
+        "clusters": 12,
+        "noise_fraction": 0.0,
+        "versions": {
+          "numpy": "2.3.5",
+          "sklearn": "1.6.1"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+numpy==2.3.5
+scikit-learn==1.6.1
+fastapi==0.124.2
+uvicorn==0.38.0
+pydantic==2.12.5
+# Explicit transitive pins for reproducible local evaluation.
+scipy==1.17.0
+threadpoolctl==3.6.0
+joblib==1.5.3
