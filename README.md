@@ -22,15 +22,48 @@ threads are requested during computation; this is not a 5% CPU cap.
 
 ## Run locally
 
-Use Python **3.12**. On Windows use WSL2/Ubuntu for the Apex CLI workflow.
+Use Python **3.12**. Native Windows is supported for local tests, benchmarks,
+and the HTTP server. The Apex CLI workflow uses WSL2/Ubuntu.
+
+### Native Windows (PowerShell)
+
+```powershell
+git clone https://github.com/ssboroo/Apex-Text-Cluster.git
+cd Apex-Text-Cluster
+py -3.12 -m venv .venv
+.\\.venv\\Scripts\\Activate.ps1
+python -m pip install -r requirements-dev.txt
+python -m pytest -q
+python benchmark.py --suite smoke --output results/smoke-windows.json
+python solution.py --port 8001
+```
+
+If PowerShell blocks the activation script, run this in that PowerShell window,
+then activate the environment again:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\\.venv\\Scripts\\Activate.ps1
+```
+
+The server stays open in that window. In a second PowerShell window, check it:
+
+```powershell
+Invoke-RestMethod http://127.0.0.1:8001/health
+$body = @{texts=@("bitcoin blockchain wallet", "football stadium match")} | ConvertTo-Json -Compress
+Invoke-RestMethod -Uri http://127.0.0.1:8001/cluster -Method Post -ContentType "application/json" -Body $body
+```
+
+### WSL2 Ubuntu (Apex CLI workflow)
 
 ```bash
 git clone https://github.com/ssboroo/Apex-Text-Cluster.git
 cd Apex-Text-Cluster
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
-python solution.py --port 8001
+python -m pip install -r requirements-dev.txt
+python -m pytest -q
+python benchmark.py --suite smoke --output results/smoke-wsl.json
 ```
 
 ```bash
@@ -55,14 +88,19 @@ docker run --rm --cpus=2 --memory=1536m -p 8001:8001 rainy-apex
 ```bash
 python -m pip install -r requirements-dev.txt
 python -m pytest -q
+python benchmark.py --suite smoke --output results/smoke.json
 python benchmark.py --suite full --output results/synthetic-final.json
 python benchmark.py --suite stress --output results/stress-final.json
 ```
 
+Run the same commands in PowerShell after activating the Windows virtual
+environment. CI runs the tests and smoke benchmark on both Ubuntu and Windows.
 The benchmark compares the unmodified upstream starter and the candidate in
 fresh spawned processes, both limited to two numerical-library threads. Scores
 use `(max(0, ARI) + NMI) / 2`. Timing excludes process startup/imports and includes
-clustering; peak RSS is the process lifetime high-water mark on Linux.
+clustering. Linux and macOS report the process high-water RSS; Windows samples
+RSS every 50 ms using psutil, so very brief memory spikes may be missed. Results
+include an `rss_method` field identifying the measurement method.
 
 ### Public corpus (optional download, never during a submission)
 
