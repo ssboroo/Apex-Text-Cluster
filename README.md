@@ -31,7 +31,7 @@ and the HTTP server. The Apex CLI workflow uses WSL2/Ubuntu.
 git clone https://github.com/ssboroo/Apex-Text-Cluster.git
 cd Apex-Text-Cluster
 py -3.12 -m venv .venv
-.\\.venv\\Scripts\\Activate.ps1
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements-dev.txt
 python -m pytest -q
 python benchmark.py --suite smoke --output results/smoke-windows.json
@@ -43,7 +43,7 @@ then activate the environment again:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\\.venv\\Scripts\\Activate.ps1
+.\.venv\Scripts\Activate.ps1
 ```
 
 The server stays open in that window. In a second PowerShell window, check it:
