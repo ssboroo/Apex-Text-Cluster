@@ -10,6 +10,7 @@ import json
 import multiprocessing as mp
 import platform
 import random
+import threading
 import time
 from pathlib import Path
 
@@ -49,9 +50,51 @@ def synthetic(seed, size, n_topics, style):
     return texts, labels
 
 
+def _start_peak_rss_reader():
+    """Return a peak-RSS reader and method label on Linux, macOS, and Windows."""
+    try:
+        import resource
+    except ImportError:
+        # Windows has no resource module. Sample RSS periodically; very brief
+        # memory spikes may be missed, so the result is an estimate.
+        import psutil
+
+        process = psutil.Process()
+        stop = threading.Event()
+        peak = [process.memory_info().rss]
+
+        def sample():
+            while not stop.wait(0.05):
+                try:
+                    peak[0] = max(peak[0], process.memory_info().rss)
+                except psutil.Error:
+                    break
+
+        sampler = threading.Thread(target=sample, daemon=True)
+        sampler.start()
+
+        def read_peak_mib():
+            stop.set()
+            sampler.join()
+            try:
+                peak[0] = max(peak[0], process.memory_info().rss)
+            except psutil.Error:
+                pass
+            return round(peak[0] / (1024 * 1024), 1)
+
+        return read_peak_mib, 'psutil_sampled_50ms'
+
+    def read_peak_mib():
+        # Linux reports KiB; macOS reports bytes.
+        divisor = 1024 * 1024 if platform.system() == 'Darwin' else 1024
+        return round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / divisor, 1)
+
+    return read_peak_mib, 'resource_maxrss'
+
+
 def worker(method, texts, truth, queue):
     # Each method gets a fresh process, so RSS and timing are comparable.
-    import resource
+    read_peak_mib, rss_method = _start_peak_rss_reader()
     import numpy as np
     import sklearn
     from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
@@ -69,7 +112,7 @@ def worker(method, texts, truth, queue):
         queue.put({
             'ok': True, 'seconds': round(time.perf_counter() - started, 4),
             'cpu_seconds': round(time.process_time() - before, 4),
-            'peak_rss_mib': round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024, 1),
+            'peak_rss_mib': read_peak_mib(), 'rss_method': rss_method,
             'ari': round(float(ari), 5), 'nmi': round(float(nmi), 5),
             'combined': round((max(0, float(ari)) + float(nmi)) / 2, 5),
             'clusters': len(set(predicted) - {-1}),
